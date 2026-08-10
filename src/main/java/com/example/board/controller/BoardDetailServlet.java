@@ -46,6 +46,8 @@ public class BoardDetailServlet extends HttpServlet {
             return;
         }
 
+        boardDao.increaseViewCount(id);
+
         BoardDto board =
                 boardDao.findById(id);
 

@@ -210,4 +210,32 @@ public class BoardDao {
             );
         }
     }
+
+    public void increaseViewCount(Long id) {
+
+        String sql = """
+            UPDATE board
+            SET view_count = view_count + 1
+            WHERE id = ?
+            """;
+
+        try (
+                Connection connection =
+                        DBConnection.getConnection();
+
+                PreparedStatement statement =
+                        connection.prepareStatement(sql)
+        ) {
+
+            statement.setLong(1, id);
+
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(
+                    "게시글 조회수 증가 중 오류가 발생했습니다.",
+                    e
+            );
+        }
+    }
 }
