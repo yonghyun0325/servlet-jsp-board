@@ -1,10 +1,11 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>글쓰기 - Legacy Board</title>
+    <title>게시글 수정 - Legacy Board</title>
 
     <style>
         * {
@@ -92,10 +93,10 @@
 
 <div class="container">
 
-    <h1>게시글 작성</h1>
+    <h1>게시글 수정</h1>
 
     <p class="description">
-        새로운 게시글을 작성합니다.
+        게시글 내용을 수정합니다.
     </p>
 
     <form action="#" method="post">
@@ -107,7 +108,7 @@
                     type="text"
                     id="title"
                     name="title"
-                    placeholder="제목을 입력해주세요."
+                    value="<c:out value='${board.title}' />"
             >
         </div>
 
@@ -118,7 +119,7 @@
                     type="text"
                     id="writer"
                     name="writer"
-                    placeholder="작성자를 입력해주세요."
+                    value="<c:out value='${board.writer}' />"
             >
         </div>
 
@@ -128,18 +129,18 @@
             <textarea
                     id="content"
                     name="content"
-                    placeholder="내용을 입력해주세요."
-            ></textarea>
+            ><c:out value="${board.content}" /></textarea>
+
         </div>
 
         <div class="button-area">
 
-            <a href="index.jsp" class="button cancel-button">
+            <a href="detail.jsp" class="button cancel-button">
                 취소
             </a>
 
             <button type="submit" class="button submit-button">
-                등록
+                수정 완료
             </button>
 
         </div>

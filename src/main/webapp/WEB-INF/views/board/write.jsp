@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>게시글 수정 - Legacy Board</title>
+    <title>글쓰기 - Legacy Board</title>
 
     <style>
         * {
@@ -92,10 +92,10 @@
 
 <div class="container">
 
-    <h1>게시글 수정</h1>
+    <h1>게시글 작성</h1>
 
     <p class="description">
-        게시글 내용을 수정합니다.
+        새로운 게시글을 작성합니다.
     </p>
 
     <form action="#" method="post">
@@ -107,7 +107,7 @@
                     type="text"
                     id="title"
                     name="title"
-                    value="Servlet 공부 중입니다."
+                    placeholder="제목을 입력해주세요."
             >
         </div>
 
@@ -118,7 +118,7 @@
                     type="text"
                     id="writer"
                     name="writer"
-                    value="홍길동"
+                    placeholder="작성자를 입력해주세요."
             >
         </div>
 
@@ -128,23 +128,18 @@
             <textarea
                     id="content"
                     name="content"
-            >Servlet과 JSP를 이용해서 게시판을 만들어보고 있습니다.
-
-Spring Boot 없이 직접 Servlet과 JSP를 사용하여
-전통적인 Java 웹 애플리케이션 구조를 공부하고 있습니다.
-
-앞으로 JDBC와 PostgreSQL도 연결할 예정입니다.</textarea>
-
+                    placeholder="내용을 입력해주세요."
+            ></textarea>
         </div>
 
         <div class="button-area">
 
-            <a href="detail.jsp" class="button cancel-button">
+            <a href="../../../index.jsp" class="button cancel-button">
                 취소
             </a>
 
             <button type="submit" class="button submit-button">
-                수정 완료
+                등록
             </button>
 
         </div>

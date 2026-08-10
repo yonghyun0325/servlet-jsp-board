@@ -105,7 +105,7 @@
     <div class="board-header">
         <h2>게시글 목록</h2>
 
-        <a href="write.jsp" class="write-button">
+        <a href="${pageContext.request.contextPath}/boards/write" class="write-button">
             글쓰기
         </a>
     </div>
@@ -130,7 +130,7 @@
                 <td>${board.id}</td>
 
                 <td class="title">
-                    <a href="${pageContext.request.contextPath}/detail.jsp?id=${board.id}">
+                    <a href="${pageContext.request.contextPath}boards/detail?id=${board.id}">
                             ${board.title}
                     </a>
                 </td>

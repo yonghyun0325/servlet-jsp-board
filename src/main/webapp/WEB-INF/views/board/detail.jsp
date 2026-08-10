@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -112,41 +113,58 @@
     <div class="post-header">
 
         <h2 class="post-title">
-            Servlet 공부 중입니다.
+            <c:out value="${board.title}" />
         </h2>
 
         <div class="post-info">
-            <span>작성자 : 홍길동</span>
-            <span>작성일 : 2026-08-07</span>
-            <span>조회수 : 15</span>
+            <span>
+                작성자 : <c:out value="${board.writer}" />
+            </span>
+            <span>
+                작성일 : <c:out value="${board.createdAt}" />
+            </span>
+            <span>
+                조회수 : <c:out value="${board.viewCount}" />
+            </span>
         </div>
 
     </div>
 
     <div class="post-content">
-        Servlet과 JSP를 이용해서 게시판을 만들어보고 있습니다.
-
-        Spring Boot 없이 직접 Servlet과 JSP를 사용하여
-        전통적인 Java 웹 애플리케이션 구조를 공부하고 있습니다.
-
-        앞으로 JDBC와 PostgreSQL도 연결할 예정입니다.
+        <c:out value="${board.content}" />
     </div>
 
     <div class="button-area">
 
-        <a href="index.jsp" class="button list-button">
+        <a href="${pageContext.request.contextPath}/boards" class="button list-button">
             목록
         </a>
 
         <div class="right-buttons">
 
-            <a href="edit.jsp" class="button edit-button">
+            <a href="${pageContext.request.contextPath}/boards/edit?id=${board.id}" class="button edit-button">
                 수정
             </a>
 
-            <button type="button" class="button delete-button">
-                삭제
-            </button>
+            <form
+                    action="${pageContext.request.contextPath}/boards/delete"
+                    method="post"
+                    style="display: inline;"
+                    onsubmit="return confirm('정말 삭제하시겠습니까?');"
+            >
+                <input
+                        type="hidden"
+                        name="id"
+                        value="${board.id}"
+                >
+
+                <button
+                        type="submit"
+                        class="button delete-button"
+                >
+                    삭제
+                </button>
+            </form>
 
         </div>
 
